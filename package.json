@@ -1,0 +1,29 @@
+{
+  "name": "yapc",
+  "version": "1.0.0",
+  "description": "yet another pomodoro clock",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dev": "webpack --watch --mode=development"
+  },
+  "keywords": [
+    "pomodoro",
+    "tasks",
+    "timer",
+    "organizer"
+  ],
+  "author": "b1troot",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^2.1.1",
+    "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.8",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "vue": "^2.6.8"
+  }
+}
