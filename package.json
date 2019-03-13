@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "yet another pomodoro clock",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-dev": "webpack --watch --mode=development"
