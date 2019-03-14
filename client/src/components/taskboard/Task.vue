@@ -1,9 +1,7 @@
 <template>
   <div class="task-wrapper">
-    <Label labelClass="task-name-container" content="Some task"/>
-    <Label type="dropdown" labelClass="task-priority-container" :items="priorities"/>
-    <Label type="dropdown" labelClass="task-status-container" :items="statuses"/>
-    <div class="task-elapsed-container"></div>
+    <status-tag/>
+    <priority-tag/>
   </div>
 </template>
 
@@ -14,33 +12,16 @@
   display: flex;
   justify-content: space-between;
 }
-
-.task-name-container {
-  width: 30%;
-  background-color: #c4c4c4;
-  border-left: 10px solid #3f9bff;
-}
-.task-priority-container {
-  width: 24%;
-  background-color: #f52f58;
-  position: relative;
-}
-
-.task-status-container {
-  width: 24%;
-}
-.task-elapsed-container {
-  width: 20%;
-  background-color: #3f9bff;
-}
 </style>
 
 <script>
 import "../../styles/colors.css";
-import Label from "./Label.vue";
+
+import StatusTag from "./StatusTag.vue";
+import PriorityTag from "./PriorityTag.vue";
 export default {
   name: "Task",
-  components: { Label },
+  components: { StatusTag, PriorityTag },
   data: function() {
     return {
       priorities: null,
