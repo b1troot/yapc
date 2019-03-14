@@ -1,14 +1,14 @@
 <template>
-  <div class="dropdown-container" :class="dropdownClass">
+  <td class="dropdown-container">
     <div
-      class="dropdown-selected flex-center"
-      :class="selected.etiquette"
+      class="dropdown-selected"
+      :class="$data._selected.etiquette"
       v-on:click="expandDropdown"
-    >{{selected.label}}</div>
+    >{{$data._selected.label}}</div>
 
     <ul v-if="isExpanded" class="dropdown-list">
       <li
-        class="dropdown-item flex-center"
+        class="dropdown-item"
         v-for="(item) in dropdownItems"
         :key="item.id"
         :class="item.etiquette"
@@ -17,17 +17,19 @@
         <p>{{ item.label }}</p>
       </li>
     </ul>
-  </div>
+  </td>
 </template>
 
-<style scoped>
+<style lang="scss">
+@import "../../styles/main.scss";
 .dropdown-container {
   width: 100%;
   height: 100%;
   position: relative;
-  color: aliceblue;
+  color: $main-bright-color;
 }
 .dropdown-selected {
+  @include flex-center;
   cursor: pointer;
   height: 100%;
 }
@@ -40,6 +42,7 @@
   overflow: hidden;
 }
 .dropdown-item {
+  @include flex-center;
   height: 3rem;
   width: 100%;
   cursor: pointer;
@@ -60,20 +63,25 @@ export default {
       type: Array,
       default: () => []
     },
-    dropdownClass: {
-      type: String
+    selected: {
+      type: Object,
+      required: true
+    },
+    handleChange: {
+      type: Function
     }
   },
   data: function() {
+    console.log(this.$props.selected);
     return {
       isExpanded: false,
-      selected: this.$props.items[0]
+      _selected: this.$props.selected
     };
   },
   computed: {
     dropdownItems: function() {
       let items = this.$props.items;
-      return items.filter(el => el.id !== this.selected.id);
+      return items.filter(el => el.id !== this.$data._selected.id);
     }
   },
   methods: {
@@ -83,10 +91,11 @@ export default {
         : (this.$data.isExpanded = true);
     },
     selectItem: function(index) {
-      this.$data.selected = this.dropdownItems.filter(
+      this.$data._selected = this.dropdownItems.filter(
         item => item.id === index
       )[0];
       this.expandDropdown();
+      this.$props.handleChange(this.$data._selected);
     }
   }
 };

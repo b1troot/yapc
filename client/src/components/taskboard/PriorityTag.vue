@@ -1,10 +1,14 @@
 <template>
-  <base-dropdown dropdownClass="priorityTag" :items="priorities"/>
+  <base-dropdown
+    class="base-dropdown"
+    :items="priorities"
+    :selected="currentPriority"
+    :handleChange="changePriority"
+  />
 </template>
-<style scoped>
-.priorityTag {
-  width: 15em;
-}
+
+<style scoped lang="scss">
+@import "../../styles/main.scss";
 </style>
 
 <script>
@@ -12,13 +16,21 @@ import BaseDropdown from "../base/BaseDropdown.vue";
 export default {
   name: "PriorityTag",
   components: { BaseDropdown },
-  data: function() {
-    return {
-      priorities: []
-    };
+
+  props: {
+    priorities: {
+      type: Array,
+      required: true
+    },
+    currentPriority: {
+      type: Object,
+      required: true
+    }
   },
-  beforeMount: function() {
-    this.priorities = require("./dummyData.js").priorities;
+  methods: {
+    changePriority: function(data) {
+      this.$emit("priority", data.label);
+    }
   }
 };
 </script>

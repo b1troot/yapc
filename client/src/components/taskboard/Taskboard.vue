@@ -1,18 +1,21 @@
 <template>
-  <div class="taskboard">
-    <Task/>
-    <Task/>
-    <Task/>
-  </div>
+  <table class="taskboard">
+    <thead>
+      <tr>
+        <td>one</td>
+        <td>two</td>
+        <td>three</td>
+      </tr>
+    </thead>
+    <tbody>
+      <Task/>
+      <Task/>
+      <Task/>
+    </tbody>
+  </table>
 </template>
-<style scoped>
+<style lang="scss" scoped>
 .taskboard {
-  width: 100vw;
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
 }
 </style>
 <script>

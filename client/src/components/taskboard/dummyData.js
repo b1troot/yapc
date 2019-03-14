@@ -2,20 +2,20 @@ module.exports = {
   statuses: [
     {
       id: "ds13m",
-      label: "Not started",
-      etiquette: "doger-blue",
+      label: "fresh",
+      etiquette: "neutral-label",
       selected: true
     },
     {
       id: "d2svd4",
       label: "In progress",
-      etiquette: "purple-heart",
+      etiquette: "authority-label",
       selected: false
     },
     {
       id: "f76sd",
       label: "Done",
-      etiquette: "caribbean-green",
+      etiquette: "success-label",
       selected: false
     }
   ],
@@ -23,20 +23,54 @@ module.exports = {
     {
       id: "d3434",
       label: "Low",
-      etiquette: "caribbean-green",
+      etiquette: "success-label",
       selected: true
     },
     {
       id: "d34sd4",
       label: "Medium",
-      etiquette: "web-orange",
+      etiquette: "warm-label",
       selected: false
     },
     {
       id: "dhy54d4",
       label: "High",
-      etiquette: "radical-red",
+      etiquette: "danger-label",
       selected: false
     }
-  ]
+  ],
+  tasks: [
+    {
+      name: "Task number one",
+      priority: "low",
+      status: "fresh"
+    },
+    {
+      name: "Task number two",
+      priority: "low",
+      status: "fresh"
+    },
+    {
+      name: "Task number three",
+      priority: "low",
+      status: "fresh"
+    }
+  ],
+  defaults: {
+    task: {
+      name: "New task",
+      priority: {
+        id: "d3434",
+        label: "Low",
+        etiquette: "success-label",
+        selected: true
+      },
+      status: {
+        id: "ds13m",
+        label: "fresh",
+        etiquette: "neutral-label",
+        selected: true
+      }
+    }
+  }
 };
