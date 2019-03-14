@@ -4,6 +4,10 @@
   "description": "yet another pomodoro clock",
   "main": "index.js",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/b1troot/yapc.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-dev": "webpack --watch --mode=development"
