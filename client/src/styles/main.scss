@@ -1,0 +1,11 @@
+@import "colors";
+@import "mixins";
+
+$base-tag-w: 15em;
+$base-tag-h: 3em;
+$normal-label-w: 10em;
+
+.base-dropdown {
+  width: $normal-label-w;
+  height: $base-tag-h;
+}

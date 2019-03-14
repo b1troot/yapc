@@ -1,0 +1,27 @@
+$radical-red: #f52f58;
+$caribbean-green: #00ce6c;
+$web-orange: #ffa800;
+$doger-blue: #3f9bff;
+$purple-heart: #8143d9;
+$silver: #c4c4c4;
+$athens-gray: #f3f1f4;
+$main-bright-color: aliceblue;
+
+.base-label {
+  background-color: $athens-gray;
+}
+.danger-label {
+  background-color: $radical-red;
+}
+.success-label {
+  background-color: $caribbean-green;
+}
+.warm-label {
+  background-color: $web-orange;
+}
+.neutral-label {
+  background-color: $doger-blue;
+}
+.authority-label {
+  background-color: $purple-heart;
+}
