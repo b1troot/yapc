@@ -10,7 +10,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-dev": "webpack --watch --mode=development"
+    "build-dev": "webpack --watch --mode=development",
+    "dev-serve": "webpack-dev-server"
   },
   "keywords": [
     "pomodoro",
@@ -29,7 +30,8 @@
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.8",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
     "vue": "^2.6.8"
