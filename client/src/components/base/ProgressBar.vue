@@ -13,19 +13,20 @@
   width: $base-tag-w;
   height: $base-tag-h;
   @include flex-center;
-  background-color: black; //$athens-gray;
+  background-color: $athens-gray;
 }
 .bar {
   position: relative;
   background-color: $silver;
+  //background-color: $silver;
   width: 80%;
-  height: 60%;
+  height: 50%;
   border-radius: 20px;
 }
 .progress {
   position: absolute;
   height: 100%;
-  background-color: $doger-blue;
+  background-color: $purple-heart;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
 }
@@ -35,18 +36,18 @@
 export default {
   name: "ProgressBar",
   props: {
-    progress: {
+    fill: {
       type: String,
       required: true,
       default: 0
     }
   },
   data: function() {
-    let progress = this.$props.progress;
+    let fill = this.$props.fill;
     let styles = {
-      width: progress + "%"
+      width: fill + "%"
     };
-    if (Number(progress) > 90) {
+    if (Number(fill) > 90) {
       styles["border-bottom-right-radius"] = "20px";
       styles["border-top-right-radius"] = "20px";
     }

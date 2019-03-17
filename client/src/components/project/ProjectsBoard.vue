@@ -1,30 +1,31 @@
 <template>
-  <table>
-    <thead></thead>
+  <table class="project">
+    <table-header :labels="projectLabels"/>
     <tbody>
-      <tr>
-        <base-tag tagClass="name-label" content="Test project"/>
-        <progress-bar progress="89"/>
-      </tr>
+      <project-deadline/>
+      <project-deadline/>
+      <project-deadline/>
     </tbody>
   </table>
 </template>
 
 <style scoped lang="scss">
 @import "../../styles/main.scss";
-.name-label {
-  border-left: 10px solid $doger-blue;
-  color: $doger-blue;
+.project {
+  font-size: 1rem;
 }
 </style>
 
 
 
 <script>
-import BaseTag from "../base/BaseTag.vue";
-import ProgressBar from "../base/ProgressBar.vue";
+import TableHeader from "../base/TableHeader.vue";
+import ProjectDeadline from "./ProjectDeadline.vue";
 export default {
-  name: "ProjectsBoard.vue",
-  components: { BaseTag, ProgressBar }
+  name: "ProjectsBoard",
+  components: { TableHeader, ProjectDeadline },
+  data: () => ({
+    projectLabels: require("./project.config.js").projectLabels
+  })
 };
 </script>
