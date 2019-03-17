@@ -1,12 +1,6 @@
 <template>
   <table class="taskboard">
-    <thead>
-      <tr>
-        <td>one</td>
-        <td>two</td>
-        <td>three</td>
-      </tr>
-    </thead>
+    <task-bar :labels="labelsCollection"></task-bar>
     <tbody>
       <Task/>
       <Task/>
@@ -19,10 +13,19 @@
 }
 </style>
 <script>
+import TaskBar from "./TaskBar.vue";
 import Task from "./Task.vue";
+import { taskboardLabels } from "./taskboard.config.js";
 export default {
   name: "Taskboard",
-  components: { Task }
+  components: { TaskBar, Task },
+  data: () => ({
+    labelsCollection: taskboardLabels
+  }),
+
+  beforeDestroy: () => {
+    this.labelsCollection = null;
+  }
 };
 </script>
 

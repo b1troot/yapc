@@ -1,15 +1,15 @@
 <template>
-  <td class="base-tag base-label">
+  <td class="base-tag" :class="tagClass">
     <p>{{content}}</p>
   </td>
 </template>
 <style lang="scss" scoped>
 @import "../../styles/main.scss";
 .base-tag {
-  color: $purple-heart;
   width: $base-tag-w;
   height: $base-tag-h;
-  border-left: 10px solid $purple-heart;
+  background-color: $athens-gray;
+  color : $main-bright-color;
 
   & > p {
     width: 100%;
@@ -24,6 +24,9 @@ export default {
   name: "BaseTag",
   props: {
     content: {
+      type: String
+    },
+    tagClass: {
       type: String
     }
   }
