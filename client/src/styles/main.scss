@@ -8,6 +8,21 @@ $medium-tag-w: 7em;
 $long-tag-w: 15em;
 $normal-label-w: 10em;
 
+.main-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: yellow;
+}
+#vue-container {
+  //width: 100vw;
+  //height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .base-dropdown {
   width: $normal-label-w;
   height: $base-tag-h;

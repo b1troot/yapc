@@ -3,10 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
-#vue-container {
+.main-wrapper {
   width: 100vw;
   height: 100vh;
-  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#vue-container {
+  //width: 100vw;
+  //height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
