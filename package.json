@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-dev": "webpack --watch --mode=development",
-    "dev-serve": "webpack-dev-server"
+    "dev-serve": "webpack-dev-server --watch"
   },
   "keywords": [
     "pomodoro",
@@ -34,6 +34,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "vue": "^2.6.8"
+    "vue": "^2.6.8",
+    "vuex": "^3.1.0"
   }
 }

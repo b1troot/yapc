@@ -22,6 +22,10 @@ const taskboardLabels = [
   {
     name: "Total time",
     color: "taskbar-label-generic"
+  },
+  {
+    icon: "fas fa-plus-circle plus-icon",
+    color: "taskbar-label-generic"
   }
 ];
 

@@ -33,3 +33,36 @@ const taskModel = {
   // ogolny czas pracy nad zadaniem
   timeSpend: 120
 };
+
+const task1 = {
+  id: "3e6d3",
+  name: "task number one",
+  status: "fresh",
+  priority: "low",
+  sessionLength: 25,
+  sessionsDone: 0,
+  timeSpend: 0
+};
+const task2 = {
+  id: "3e6d4",
+  name: "task number two",
+  status: "In Progress",
+  priority: "medium",
+  sessionLength: 25,
+  sessionsDone: 4,
+  timeSpend: 100
+};
+const project1 = {
+  id: "3fdd763b",
+  tasksNum: 2,
+  progress: 57,
+  startedAt: "16.03.2019",
+  deadline: "02.04.2019",
+  daysLeft: 16,
+  timeSpend: 100,
+  tasks: [task1, task2]
+};
+const mockProjects = [project1];
+module.exports = {
+  mockProjects
+};

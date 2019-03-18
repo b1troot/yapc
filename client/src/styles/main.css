@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+/*
 .main-wrapper {
   width: 100vw;
   height: 100vh;
@@ -11,9 +12,8 @@
   align-items: center;
 }
 #vue-container {
-  //width: 100vw;
-  //height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+*/

@@ -1,15 +1,16 @@
 <template>
   <tr class="task-wrapper">
-    <name-tag taskname="Task name"/>
+    <name-tag :taskname="task.name"/>
     <status-tag :statuses="_statuses" :currentStatus="_status" v-on:status="updateStatus"/>
     <priority-tag
       :priorities="_priorities"
       :currentPriority="_priority"
       v-on:priority="updatePriority"
     />
-    <base-tag tagClass="sessions-tag" content="5"/>
-    <base-tag tagClass="session-len-tag" content="25 min"/>
-    <base-tag tagClass="minutes-tag" content="65 min"/>
+    <base-tag tagClass="sessions-tag" :content="`${task.sessionsDone}`"/>
+    <base-tag tagClass="session-len-tag" :content="`${task.sessionLength} min`"/>
+    <base-tag tagClass="minutes-tag" :content="`${task.timeSpend} min`"/>
+    <edit-button v-if="editable" :handleRemove="handleRemove" :id="task.id"/>
   </tr>
 </template>
 
@@ -40,10 +41,14 @@ import BaseTag from "../base/BaseTag.vue";
 import NameTag from "./NameTag.vue";
 import StatusTag from "./StatusTag.vue";
 import PriorityTag from "./PriorityTag.vue";
+import EditButton from "../base/EditButton.vue";
 export default {
   name: "Task",
-  components: { NameTag, BaseTag, StatusTag, PriorityTag },
+  components: { NameTag, BaseTag, StatusTag, PriorityTag, EditButton },
   data: function() {
+    /**
+     * @todo rebuild data flow, include store
+     */
     return {
       _name: "",
       _status: "",
@@ -53,14 +58,37 @@ export default {
     };
   },
   props: {
+    task: {
+      type: Object
+    },
+    handleRemove: {
+      type: Function
+    },
     name: {
-      type: String
+      type: String,
+      default: "new task"
     },
     status: {
       type: String
     },
     priority: {
       type: String
+    },
+    sessionsDone: {
+      type: Number,
+      default: 0
+    },
+    sessionLength: {
+      type: Number,
+      default: 25
+    },
+    totalTime: {
+      type: Number,
+      default: 0
+    },
+    editable: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -74,7 +102,7 @@ export default {
   },
   beforeMount: function() {
     const { name, status, priority } = require("./dummyData.js").defaults.task;
-    this._name = this.$props.name || name;
+    //this._name = this.$props.name || name;
     this._status = this.$props.status || status;
     this._priority = this.$props.priority || priority;
     this._statuses = require("./dummyData.js").statuses;
