@@ -55,12 +55,13 @@ const task2 = {
 const project1 = {
   id: "3fdd763b",
   tasksNum: 2,
-  progress: 57,
+  progress: 27,
   startedAt: "16.03.2019",
   deadline: "02.04.2019",
   daysLeft: 16,
   timeSpend: 100,
-  tasks: [task1, task2]
+  tasks: [task1, task2],
+  completed: 1
 };
 const mockProjects = [project1];
 module.exports = {

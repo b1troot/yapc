@@ -1,6 +1,8 @@
 <template>
   <div class="project-wrapper">
+    <project-header/>
     <task-board :tasks="project.tasks" :handleAdd="addTask" :handleRemove="removeTask"/>
+    <project-overview :project="project"/>
   </div>
 </template>
 
@@ -11,12 +13,14 @@
 }
 </style>
 <script>
+import ProjectHeader from "../components/project/ProjectHeader.vue";
+import ProjectOverview from "../components/project/ProjectOverview.vue";
 import TaskBoard from "../components/taskboard/Taskboard.vue";
 import EditButton from "../components/base/EditButton.vue";
 import { store } from "../store.js";
 export default {
   name: "ProjectPage",
-  components: { TaskBoard },
+  components: { ProjectHeader, TaskBoard, ProjectOverview },
   data: () => ({
     project: store.state.projects[0]
   }),
