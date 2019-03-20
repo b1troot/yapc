@@ -1,27 +1,21 @@
 import Vue from "vue";
 import App from "./App.vue";
+//import VueRouter from "vue-router";
 import "./styles/main.css";
-//import Vuex from "vuex";
-//import { mockProjects } from "./mockData.js";
-
+//import ProjectPage from "./pages/ProjectPage.vue";
 /*
-
-Vue.use(Vuex);
-const store = new Vuex.store({
-  state: {
-    projects: mockProjects
-  },
-  mutations: {
-    addTask(state, payload) {
-      const { projectID, task } = payload;
-      projectById(state.projects, projectID).push(task);
-    },
-    removeTask(state, payload) {
-      const { projectID, taskID } = payload;
-      let project = projectById(state.projects, projectID);
-      project.tasks = project.tasks.filter(task => task.id != taskID);
+Vue.use(VueRouter);
+const router = new VueRouter({
+  mode: "history",
+  //base: __dirname,
+  routes: [
+    {
+      path: "/",
+      components: {
+        project: ProjectPage
+      }
     }
-  }
+  ]
 });
 */
 const VueApp = new Vue({

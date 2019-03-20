@@ -11,7 +11,12 @@ const priorities = [
   labelFactory("High", 3, "high-priority-label")
 ];
 
+const mainComponents = [
+  { name: "MainPage", icon: "fas fa-home" },
+  { name: "ProjectPage", icon: "fas fa-clipboard-list" }
+];
 module.exports = {
   statuses,
-  priorities
+  priorities,
+  mainComponents
 };

@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { mockProjects } from "./mockData.js";
 import { Task } from "../models/task.model.js";
+import { statuses, priorities, mainComponents } from "./config.js";
 
 // helper function for finding projects and tasks by their id
 
@@ -18,12 +19,15 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    projects: mockProjects,
     config: {
-      statuses: require("./config.js").statuses,
-      priorities: require("./config.js").priorities
-    }
+      statuses: statuses,
+      priorities: priorities,
+      mainComponents: mainComponents,
+      currentMainComponent: null
+    },
+    projects: mockProjects
   },
+
   mutations: {
     addTask(state, { projectID }) {
       getItem(state.projects, projectID).tasks.push(Task({ owner: projectID }));
@@ -48,6 +52,9 @@ export const store = new Vuex.Store({
     },
     decrementDone(state, projectID) {
       getProject.call(null, state, projectID).completed--;
+    },
+    selectMainComponent(state, index) {
+      state.config.currentMainComponent = state.config.mainComponents[index];
     }
   }
 });

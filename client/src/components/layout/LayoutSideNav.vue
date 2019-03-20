@@ -1,21 +1,35 @@
 <template>
   <nav>
     <ul>
-      <li>
-        <i class="fas fa-clipboard"></i>
-      </li>
-      <li>
-        <i class="fas fa-tasks"></i>
-      </li>
-      <li>
-        <i class="far fa-calendar-alt"></i>
-      </li>
-      <li>
-        <i class="far fa-chart-bar"></i>
+      <li v-for="(component,index) in mainComponents" :key="index">
+        <i :class="component.icon" v-on:click="selectComponent(index)"></i>
       </li>
     </ul>
   </nav>
 </template>
+
+
+<script>
+import { store } from "../../store.js";
+export default {
+  name: "LayoutSideNav",
+  data: function() {
+    return {
+      mainComponents: store.state.config.mainComponents
+    };
+  },
+  methods: {
+    selectComponent: function(index) {
+      store.commit("selectMainComponent", index);
+    }
+  },
+  beforeMount: function() {
+    this.selectComponent(0);
+  }
+};
+</script>
+
+
 
 <style lang="scss" scoped>
 @import "../../styles/main.scss";
@@ -36,9 +50,3 @@ nav {
   }
 }
 </style>
-
-<script>
-export default {
-  name: "LayoutSideNav"
-};
-</script>

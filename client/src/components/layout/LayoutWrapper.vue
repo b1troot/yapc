@@ -20,7 +20,6 @@ export default {
 .layout-wrapper {
   min-height: 100vh;
   width: 100vw;
-  background-color: gray;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 10vh auto;
