@@ -7,7 +7,6 @@
 @import "../../styles/main.scss";
 .base-tag {
   width: $base-tag-w;
-  //height: $base-tag-h;
   background-color: $athens-gray;
   color: $main-bright-color;
 

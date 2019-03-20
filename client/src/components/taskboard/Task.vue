@@ -6,7 +6,6 @@
       :task="task"
       :taskID="task.id"
       :projectID="task.owner"
-      v-on:status="updateStatus"
     />
 
     <priority-tag
@@ -14,7 +13,6 @@
       :task="task"
       :taskID="task.id"
       :projectID="task.owner"
-      v-on:priority="updatePriority"
     />
 
     <base-tag tagClass="sessions-tag" :content="`${task.sessions}`"/>
@@ -25,25 +23,7 @@
 </template>
 
 
-<style lang="scss" scoped>
-@import "../../styles/main.scss";
-.task-wrapper {
-  width: auto;
-  height: auto;
-}
-.sessions-tag {
-  width: $short-tag-w;
-  background-color: $supernova;
-}
-.session-len-tag {
-  width: $short-tag-w;
-  background-color: $silver;
-}
-.minutes-tag {
-  width: $medium-tag-w;
-  background-color: $international-orange;
-}
-</style>
+
 
 
 <script>
@@ -95,19 +75,26 @@ export default {
       type: Boolean,
       default: false
     }
-  },
-
-  methods: {
-    updateStatus(status) {},
-    updatePriority(priority) {}
-  },
-  beforeMount: function() {
-    //const { name, status, priority } = require("./dummyData.js").defaults.task;
-    //this._name = this.$props.name || name;
-    //this._status = this.$props.status || status;
-    //this._priority = this.$props.priority || priority;
-    //this._statuses = require("./dummyData.js").statuses;
-    //this._priorities = require("./dummyData.js").priorities;
   }
 };
 </script>
+
+<style lang="scss" scoped>
+@import "../../styles/main.scss";
+.task-wrapper {
+  width: auto;
+  height: auto;
+}
+.sessions-tag {
+  width: $short-tag-w;
+  background-color: $supernova;
+}
+.session-len-tag {
+  width: $short-tag-w;
+  background-color: $silver;
+}
+.minutes-tag {
+  width: $medium-tag-w;
+  background-color: $international-orange;
+}
+</style>

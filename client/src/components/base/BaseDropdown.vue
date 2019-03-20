@@ -47,10 +47,6 @@ export default {
     };
   },
   computed: {
-    dropdownItems: function() {
-      let items = this.$props.options;
-      //return items.filter(el => el.value !== this.$data._selected.value);
-    },
     selected: function() {
       const { task, field, options } = this.$props;
 

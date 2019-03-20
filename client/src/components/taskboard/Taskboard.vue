@@ -6,7 +6,6 @@
     </tbody>
   </table>
 </template>
-<style lang="scss" scoped></style>
 <script>
 import TaskBar from "./TaskBar.vue";
 import Task from "./Task.vue";
@@ -40,3 +39,5 @@ export default {
 };
 </script>
 
+
+    <style lang="scss" scoped></style>

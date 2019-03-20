@@ -2,7 +2,6 @@
   <base-dropdown
     class="base-dropdown"
     dropdownClass="statusTag"
-    :handleChange="changeStatus"
     :options="statuses"
     :taskID="taskID"
     :projectID="projectID"

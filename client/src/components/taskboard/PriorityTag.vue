@@ -6,7 +6,6 @@
     :projectID="projectID"
     field="priority"
     :task="task"
-    :handleChange="changePriority"
   />
 </template>
 
@@ -34,12 +33,6 @@ export default {
   },
   data: () => ({
     priorities: store.state.config.priorities
-  }),
-
-  methods: {
-    changePriority: function(data) {
-      this.$emit("priority", data.label);
-    }
-  }
+  })
 };
 </script>
