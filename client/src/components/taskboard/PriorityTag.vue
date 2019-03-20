@@ -1,8 +1,11 @@
 <template>
   <base-dropdown
     class="base-dropdown"
-    :items="priorities"
-    :selected="currentPriority"
+    :options="priorities"
+    :taskID="taskID"
+    :owner="owner"
+    field="priority"
+    :task="task"
     :handleChange="changePriority"
   />
 </template>
@@ -13,20 +16,26 @@
 
 <script>
 import BaseDropdown from "../base/BaseDropdown.vue";
+import { store } from "../../store.js";
 export default {
   name: "PriorityTag",
   components: { BaseDropdown },
 
   props: {
-    priorities: {
-      type: Array,
-      required: true
+    task: {
+      type: Object
     },
-    currentPriority: {
-      type: Object,
-      required: true
+    taskID: {
+      type: String
+    },
+    owner: {
+      type: String
     }
   },
+  data: () => ({
+    priorities: store.state.config.priorities
+  }),
+
   methods: {
     changePriority: function(data) {
       this.$emit("priority", data.label);

@@ -1,15 +1,25 @@
 <template>
   <tr class="task-wrapper">
     <name-tag :taskname="task.name"/>
-    <status-tag :statuses="_statuses" :currentStatus="_status" v-on:status="updateStatus"/>
+    <status-tag
+      :currentStatus="task.status"
+      :task="task"
+      :taskID="task.id"
+      :owner="task.owner"
+      v-on:status="updateStatus"
+    />
+
     <priority-tag
-      :priorities="_priorities"
-      :currentPriority="_priority"
+      :currentPriority="task.priority"
+      :task="task"
+      :taskID="task.id"
+      :owner="task.owner"
       v-on:priority="updatePriority"
     />
-    <base-tag tagClass="sessions-tag" :content="`${task.sessionsDone}`"/>
+
+    <base-tag tagClass="sessions-tag" :content="`${task.sessions}`"/>
     <base-tag tagClass="session-len-tag" :content="`${task.sessionLength} min`"/>
-    <base-tag tagClass="minutes-tag" :content="`${task.timeSpend} min`"/>
+    <base-tag tagClass="minutes-tag" :content="`${task.totalTime} min`"/>
     <edit-button v-if="editable" :handleRemove="handleRemove" :id="task.id"/>
   </tr>
 </template>
@@ -42,6 +52,7 @@ import NameTag from "./NameTag.vue";
 import StatusTag from "./StatusTag.vue";
 import PriorityTag from "./PriorityTag.vue";
 import EditButton from "../base/EditButton.vue";
+
 export default {
   name: "Task",
   components: { NameTag, BaseTag, StatusTag, PriorityTag, EditButton },
@@ -49,13 +60,7 @@ export default {
     /**
      * @todo rebuild data flow, include store
      */
-    return {
-      _name: "",
-      _status: "",
-      _priority: "",
-      _statuses: [],
-      _priorities: []
-    };
+    return {};
   },
   props: {
     task: {
@@ -93,20 +98,16 @@ export default {
   },
 
   methods: {
-    updateStatus(status) {
-      this._status = status;
-    },
-    updatePriority(priority) {
-      this._status = priority;
-    }
+    updateStatus(status) {},
+    updatePriority(priority) {}
   },
   beforeMount: function() {
-    const { name, status, priority } = require("./dummyData.js").defaults.task;
+    //const { name, status, priority } = require("./dummyData.js").defaults.task;
     //this._name = this.$props.name || name;
-    this._status = this.$props.status || status;
-    this._priority = this.$props.priority || priority;
-    this._statuses = require("./dummyData.js").statuses;
-    this._priorities = require("./dummyData.js").priorities;
+    //this._status = this.$props.status || status;
+    //this._priority = this.$props.priority || priority;
+    //this._statuses = require("./dummyData.js").statuses;
+    //this._priorities = require("./dummyData.js").priorities;
   }
 };
 </script>

@@ -2,9 +2,12 @@
   <base-dropdown
     class="base-dropdown"
     dropdownClass="statusTag"
-    :items="statuses"
-    :selected="currentStatus"
     :handleChange="changeStatus"
+    :options="statuses"
+    :taskID="taskID"
+    :owner="owner"
+    field="status"
+    :task="task"
   />
 </template>
 <style scoped lang="scss">
@@ -13,23 +16,28 @@
 
 <script>
 import BaseDropdown from "../base/BaseDropdown.vue";
+import { store } from "../../store.js";
 export default {
   name: "StatusTag",
   components: { BaseDropdown },
 
   props: {
-    statuses: {
-      type: Array,
-      required: true
+    task: {
+      type: Object
     },
-    currentStatus: {
-      type: Object,
-      required: true
+    taskID: {
+      type: String
+    },
+    owner: {
+      type: String
     }
   },
+  data: () => ({
+    statuses: store.state.config.statuses
+  }),
   methods: {
     changeStatus: function(data) {
-      this.$emit("status", data.label);
+      //this.$emit("status", data.label);
     }
   }
 };

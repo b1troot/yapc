@@ -26,17 +26,16 @@ export default {
   }),
   methods: {
     addTask: function() {
-      let newTask = {
-        id: `${Math.random() * 125670}`,
-        name: "task name",
-        priority: "low",
-        status: "fresh"
-      };
       store.commit("addTask", {
-        projectID: this.project.id,
-        task: newTask
+        projectID: this.project.id
       });
     },
+
+    /**
+     * @todo find better way of handling removeTask
+     * since passing this id up and down the tree smells
+     */
+
     removeTask: function(id) {
       if (
         window.confirm(
