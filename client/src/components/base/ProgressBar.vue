@@ -30,6 +30,10 @@
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
 }
+.extraBorder {
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
 </style>
 
 <script>
@@ -37,24 +41,24 @@ export default {
   name: "ProgressBar",
   props: {
     fill: {
-      type: String,
+      type: Number,
       required: true,
       default: 0
     }
   },
-  data: function() {
-    let fill = this.$props.fill;
-    let styles = {
-      width: fill + "%"
-    };
-    if (Number(fill) > 90) {
-      styles["border-bottom-right-radius"] = "20px";
-      styles["border-top-right-radius"] = "20px";
-    }
 
-    return {
-      dynamicStyle: styles
-    };
+  computed: {
+    dynamicStyle: function() {
+      return this.$props.fill > 90
+        ? {
+            "border-bottom-right-radius": "20px",
+            "border-top-right-radius": "20px",
+            width: `${this.$props.fill}%`
+          }
+        : {
+            width: `${this.$props.fill}%`
+          };
+    }
   }
 };
 </script>

@@ -4,8 +4,8 @@
     <base-tag tagClass="start-tag" :content="start"/>
     <base-tag tagClass="deadline-tag" :content="deadline"/>
     <progress-bar :fill="progress"/>
-    <base-tag tagClass="tasks-tag" :content="tasks"/>
-    <base-tag tagClass="completed-tag" :content="completed"/>
+    <base-tag tagClass="tasks-tag" :content="`${tasks}`"/>
+    <base-tag tagClass="completed-tag" :content="`${completed}`"/>
   </tr>
 </template>
 
@@ -64,19 +64,19 @@ export default {
       default: "-------------"
     },
     progress: {
-      type: String,
+      type: Number,
       required: true,
-      default: "0"
+      default: 0
     },
     tasks: {
-      type: String,
+      type: Number,
       required: true,
-      default: "0"
+      default: 0
     },
     completed: {
-      type: String,
+      type: Number,
       required: true,
-      default: "0"
+      default: 0
     }
   }
 };

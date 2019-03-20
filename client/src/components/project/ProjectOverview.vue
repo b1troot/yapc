@@ -6,9 +6,9 @@
         name="Project overview"
         :start="project.startedAt"
         :deadline="project.deadline"
-        :progress="`${progress}`"
-        :completed="`${project.completed}`"
-        :tasks="`${project.tasks.length}`"
+        :progress="progress"
+        :completed="project.completed"
+        :tasks="project.tasks.length"
       />
     </tbody>
   </table>
@@ -30,7 +30,9 @@ export default {
     progress: function() {
       let project = this.$props.project;
       let tasks = project.tasks.length;
+
       let completed = project.completed;
+      if (completed === 0) return 0;
 
       return Math.round((completed / tasks) * 100);
     }
