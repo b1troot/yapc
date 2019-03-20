@@ -11,10 +11,27 @@
   </thead>
 </template>
 
+<script>
+export default {
+  name: "TaskBar",
+  props: {
+    labels: {
+      type: Array,
+      required: true
+    },
+    handleAdd: {
+      type: Function
+    }
+  }
+};
+</script>
+
+
 <style lang="scss" scoped>
 @import "../../styles/main.scss";
 .taskbar {
   font-size: 15px;
+
   & > td > p {
     @include flex-center;
   }
@@ -37,20 +54,4 @@
   }
 }
 </style>
-
-
-<script>
-export default {
-  name: "TaskBar",
-  props: {
-    labels: {
-      type: Array,
-      required: true
-    },
-    handleAdd: {
-      type: Function
-    }
-  }
-};
-</script>
 
