@@ -3,20 +3,19 @@ import Vuex from "vuex";
 import { mockProjects } from "./mockData.js";
 import { Task } from "../models/task.model.js";
 
-// helper function for finding project by its id
-const projectById = (projects, id) => {
-  for (let project of projects) {
-    if (project.id === id) {
-      return project;
-    }
+// helper function for finding projects and tasks by their id
+
+const getItem = (collection, id) => {
+  for (let item of collection) {
+    if (item.id === id) return item;
   }
 };
 
-// more dry version
+// helper function for filtering item out of array
+const exclude = (collection, id) => collection.filter(item => item.id !== id);
 
-const getById = (state, id) => state.filter(item => item.id === id)[0];
-const exclude = (state, id) => state.filter(item => item.id !== id);
 Vue.use(Vuex);
+
 export const store = new Vuex.Store({
   state: {
     projects: mockProjects,
@@ -27,25 +26,28 @@ export const store = new Vuex.Store({
   },
   mutations: {
     addTask(state, { projectID }) {
-      let task = Task({ owner: projectID });
-      getById(state.projects, projectID).tasks.push(task);
-      //projectById(state.projects, projectID).tasks.push(task);
+      getItem(state.projects, projectID).tasks.push(Task({ owner: projectID }));
     },
-    removeTask(state, payload) {
-      const { projectID, taskID } = payload;
-      let project = getById(state.projects, projectID);
-      //let project = projectById(state.projects, projectID);
-      project.tasks = exclude(project.tasks, taskID);
-      //project.tasks = project.tasks.filter(task => task.id != taskID);
+    removeTask(state, { projectID, taskID }) {
+      let tasks = getItem(state.projects, projectID).tasks;
+      getItem(state.projects, projectID).tasks = exclude(tasks, taskID);
     },
-    editTask(state, { owner, taskID, field, value }) {
-      //const { field, value, owner } = payload;
-      let project = getById(state.projects, owner);
-      //console.log(project);
+    editTask(state, { projectID, taskID, field, value }) {
+      let task = getItem(getItem(state.projects, projectID).tasks, taskID);
 
-      let task = getById(project.tasks, taskID);
+      if (field === "status") {
+        if (value === 3 && task.status !== 3)
+          getItem(state.projects, projectID).completed++;
+        else if (value < 3 && task.status === 3)
+          getItem(state.projects, projectID).completed--;
+      }
       task[field] = value;
-      //getById(state.projects, owner).tasks[getById(taskID)][field] = value;
+    },
+    icrementDone(state, projectID) {
+      getItem(state.projects, projectID).completed++;
+    },
+    decrementDone(state, projectID) {
+      getProject.call(null, state, projectID).completed--;
     }
   }
 });

@@ -3,7 +3,7 @@
     class="base-dropdown"
     :options="priorities"
     :taskID="taskID"
-    :owner="owner"
+    :projectID="projectID"
     field="priority"
     :task="task"
     :handleChange="changePriority"
@@ -28,7 +28,7 @@ export default {
     taskID: {
       type: String
     },
-    owner: {
+    projectID: {
       type: String
     }
   },

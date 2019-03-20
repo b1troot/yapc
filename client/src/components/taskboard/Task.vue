@@ -5,7 +5,7 @@
       :currentStatus="task.status"
       :task="task"
       :taskID="task.id"
-      :owner="task.owner"
+      :projectID="task.owner"
       v-on:status="updateStatus"
     />
 
@@ -13,7 +13,7 @@
       :currentPriority="task.priority"
       :task="task"
       :taskID="task.id"
-      :owner="task.owner"
+      :projectID="task.owner"
       v-on:priority="updatePriority"
     />
 

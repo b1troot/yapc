@@ -28,7 +28,7 @@ export default {
     taskID: {
       type: String
     },
-    owner: {
+    projectID: {
       type: String
     },
     field: {
@@ -64,10 +64,10 @@ export default {
         : (this.$data.isExpanded = true);
     },
     selectItem: function(value) {
-      const { field, taskID, owner } = this.$props;
+      const { field, taskID, projectID } = this.$props;
       store.commit("editTask", {
         field,
-        owner,
+        projectID,
         taskID,
         value
       });

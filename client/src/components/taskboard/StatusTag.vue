@@ -5,7 +5,7 @@
     :handleChange="changeStatus"
     :options="statuses"
     :taskID="taskID"
-    :owner="owner"
+    :projectID="projectID"
     field="status"
     :task="task"
   />
@@ -28,17 +28,12 @@ export default {
     taskID: {
       type: String
     },
-    owner: {
+    projectID: {
       type: String
     }
   },
   data: () => ({
     statuses: store.state.config.statuses
-  }),
-  methods: {
-    changeStatus: function(data) {
-      //this.$emit("status", data.label);
-    }
-  }
+  })
 };
 </script>
